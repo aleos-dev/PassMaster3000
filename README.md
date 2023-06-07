@@ -44,9 +44,11 @@ Behind the genius of PassMaster3000™, we have a triumphant trio of tech newbie
 1. The Java Junkie :coffee:
 
 Our Java Junkie is the heart and soul of the code that makes up PassMaster3000™. No algorithm is too complex, no bug too sneaky. Java runs through their veins, and they dream in lines of code.
+
 2. The Encryption Enthusiast :spy:
 
 Where others see gibberish, our Encryption Enthusiast sees a perfectly secure piece of data. They are fascinated with ciphers and all things cryptic, ensuring your passwords are safer than a secret diary.
+
 3. The Interface Innovator :computer:
 
 Designing an interface that's both simple and effective is a task for the Interface Innovator. They believe that every button is a portal to a world of functionality and that good design is the key to a great user experience.
