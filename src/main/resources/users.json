@@ -1,0 +1,37 @@
+[ {
+  "name" : "Vasya",
+  "email" : "vasya@gmail.com",
+  "userPassword" : null,
+  "passwords" : [ {
+    "password" : null,
+    "secretKey" : null,
+    "website" : null
+  } ]
+}, {
+  "name" : "Vasya",
+  "email" : "vasya@gmail.com",
+  "userPassword" : null,
+  "passwords" : [ {
+    "password" : null,
+    "secretKey" : null,
+    "website" : null
+  } ]
+}, {
+  "name" : "Vasya",
+  "email" : "vasya@gmail.com",
+  "userPassword" : null,
+  "passwords" : [ {
+    "password" : null,
+    "secretKey" : null,
+    "website" : null
+  } ]
+}, {
+  "name" : "Vasya",
+  "email" : "vasya@gmail.com",
+  "userPassword" : null,
+  "passwords" : [ {
+    "password" : null,
+    "secretKey" : null,
+    "website" : null
+  } ]
+} ]
