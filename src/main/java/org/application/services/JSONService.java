@@ -4,23 +4,17 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.application.Main;
 import org.application.objects.user.User;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class JSONService {
-    private static JSONService service;
+    public static final JSONService service = new JSONService();
     private final File jsonFile = Path.of("src/main/resources/users.json").toFile();
     private final ObjectMapper mapper = new JsonMapper();
 
@@ -32,7 +26,7 @@ public class JSONService {
         Objects.requireNonNull(jsonFile);
         Objects.requireNonNull(user);
 
-        JsonNode node = readArrayOrCreateNew();
+        JsonNode node = readOrCreateNewArray();
         if (node.isArray()) {
             ArrayNode arrayNode = (ArrayNode) node;
             arrayNode.addPOJO(user);
@@ -46,17 +40,10 @@ public class JSONService {
         writer.writeValue(jsonFile, node);
     }
 
-    private JsonNode readArrayOrCreateNew() throws IOException {
+    private JsonNode readOrCreateNewArray() throws IOException {
         if (jsonFile.exists() && jsonFile.length() > 0) {
             return mapper.readTree(jsonFile);
         }
         return mapper.createArrayNode();
-    }
-
-    public static JSONService getInstance() {
-        if (service == null) {
-            service = new JSONService();
-        }
-        return service;
     }
 }

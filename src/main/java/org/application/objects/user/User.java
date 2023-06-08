@@ -1,79 +1,44 @@
 package org.application.objects.user;
 
-import org.application.objects.password.PasswordObject;
+import org.application.objects.website.Website;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class User {
 
-    private String name;
-    private String email;
-    private String userPassword;
-    private List<PasswordObject> passwords;
+    private final String login;
+    private final String userPassword;
+    private final Map<String, Website> websites;
 
-    public User() {
-    }
-
-    public User(String name, String email, String userPassword, List<PasswordObject> passwords) {
-        this.name = name;
-        this.email = email;
+    public User(String login, String userPassword) {
+        this.login = login;
         this.userPassword = userPassword;
-        this.passwords = passwords;
+        this.websites = new HashMap<>();
     }
 
-    public User(String name, String email, String userPassword) {
-        this.name = name;
-        this.email = email;
-        this.userPassword = userPassword;
-    }
-
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getLogin() {
+        return login;
     }
 
     public String getUserPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public List<PasswordObject> getPasswords() {
-        return passwords;
-    }
-
-    public void setPasswords(List<PasswordObject> passwords) {
-        this.passwords = passwords;
+    public Map<String, Website> getWebsites() {
+        return websites;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(getEmail(), user.getEmail());
+        return Objects.equals(getLogin(), user.getLogin());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEmail());
+        return Objects.hash(getLogin());
     }
 }

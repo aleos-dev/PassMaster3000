@@ -1,37 +1,13 @@
 [ {
-  "name" : "Vasya",
-  "email" : "vasya@gmail.com",
-  "userPassword" : null,
-  "passwords" : [ {
-    "password" : null,
-    "secretKey" : null,
-    "website" : null
-  } ]
+  "login" : "Vasya",
+  "userPassword" : "vasya@gmail.com",
+  "websites" : { }
 }, {
-  "name" : "Vasya",
-  "email" : "vasya@gmail.com",
-  "userPassword" : null,
-  "passwords" : [ {
-    "password" : null,
-    "secretKey" : null,
-    "website" : null
-  } ]
+  "login" : "Vasya",
+  "userPassword" : "vasya@gmail.com",
+  "websites" : { }
 }, {
-  "name" : "Vasya",
-  "email" : "vasya@gmail.com",
-  "userPassword" : null,
-  "passwords" : [ {
-    "password" : null,
-    "secretKey" : null,
-    "website" : null
-  } ]
-}, {
-  "name" : "Vasya",
-  "email" : "vasya@gmail.com",
-  "userPassword" : null,
-  "passwords" : [ {
-    "password" : null,
-    "secretKey" : null,
-    "website" : null
-  } ]
+  "login" : "Vasya",
+  "userPassword" : "vasya@gmail.com",
+  "websites" : { }
 } ]
