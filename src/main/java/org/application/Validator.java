@@ -8,7 +8,9 @@ public class Validator {
     }
 
     public boolean validatePassword(String password) {
-        // Method implementation
+        if (password.matches("^\\d{4,}$")) {
+            return true;
+        }
         return false;
     }
 
