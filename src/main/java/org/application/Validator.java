@@ -3,7 +3,9 @@ package org.application;
 public class Validator {
 
     public boolean validateLogin(String login) {
-        // Method implementation
+        if (login.matches("^\\w{3,20}$")){
+            return true;
+        }
         return false;
     }
 
