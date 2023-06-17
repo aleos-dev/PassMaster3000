@@ -28,7 +28,7 @@ public class UserManager {
     }
 
     private void getUsersDatabase() {
-        // Method implementation
+        this.usersDatabase = jService.getDatabase();
     }
 
     public boolean authorize(String userName, String password) {

@@ -1,5 +1,6 @@
 package org.application.objects.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.application.objects.website.Website;
 
 import java.util.HashMap;
@@ -7,10 +8,18 @@ import java.util.Map;
 import java.util.Objects;
 
 public class User {
-
+    @JsonProperty("login")
     private final String login;
+    @JsonProperty("password")
     private final String userPassword;
+    @JsonProperty("websites")
     private final Map<String, Website> websites;
+
+    public User() {
+        this.login = "login";
+        this.userPassword = "password";
+        this.websites = new HashMap<>();
+    }
 
     public User(String login, String userPassword) {
         this.login = login;
@@ -28,6 +37,19 @@ public class User {
 
     public Map<String, Website> getWebsites() {
         return websites;
+    }
+
+    public void addWebsite(String link, Website website) {
+        websites.put(link, website);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", websites=" + websites +
+                '}';
     }
 
     @Override
