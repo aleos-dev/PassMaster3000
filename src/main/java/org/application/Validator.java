@@ -13,7 +13,9 @@ public class Validator {
     }
 
     public boolean validateWebsiteName(String website) {
-        // Method implementation
+        if (website.matches("^(https?://)?([\\w.-]+)\\.([a-zA-Z]{2,})(/\\S*)?$")) {
+            return true;
+        }
         return false;
     }
 }
