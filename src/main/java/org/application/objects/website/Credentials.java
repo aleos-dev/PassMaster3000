@@ -12,6 +12,14 @@ public record Credentials(String login, String password) {
     }
 
     @Override
+    public String toString() {
+        return "Credentials{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(login);
     }

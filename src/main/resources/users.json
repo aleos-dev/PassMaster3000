@@ -1,17 +1,47 @@
-[
-  {
-    "login": "Vasya",
-    "userPassword": "vasya@gmail.com",
-    "websites": {}
-  },
-  {
-    "login": "Vasya",
-    "userPassword": "vasya@gmail.com",
-    "websites": {}
-  },
-  {
-    "login": "Vasya",
-    "userPassword": "vasya@gmail.com",
-    "websites": {}
+[ {
+  "login" : "Petya",
+  "password" : "petya@gmail.com",
+  "websites" : {
+    "youtube" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    },
+    "github" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    },
+    "google" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    }
   }
-]
+}, {
+  "login" : "Vasya",
+  "password" : "vasya@gmail.com",
+  "websites" : {
+    "youtube" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    },
+    "github" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    },
+    "google" : {
+      "credentials" : [ {
+        "login" : "login",
+        "password" : "password"
+      } ]
+    }
+  }
+} ]
