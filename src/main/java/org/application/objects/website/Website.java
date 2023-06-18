@@ -17,16 +17,16 @@ public class Website {
         return credentials;
     }
 
+    public void addOrUpdateCredentials(String login, String password) {
+        Credentials credentials = new Credentials(login, password);
+        this.credentials.removeIf(credentials::equals);
+        this.credentials.add(credentials);
+    }
+
     @Override
     public String toString() {
         return "Website{" +
                 "credentials=" + credentials +
                 '}';
-    }
-
-    public void addOrUpdateCredentials(String login, String password) {
-        Credentials credentials = new Credentials(login, password);
-        this.credentials.removeIf(credentials::equals);
-        this.credentials.add(credentials);
     }
 }
