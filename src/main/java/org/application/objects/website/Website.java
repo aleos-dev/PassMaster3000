@@ -26,6 +26,7 @@ public class Website {
 
     public void addOrUpdateCredentials(String login, String password) {
         Credentials credentials = new Credentials(login, password);
+        this.credentials.removeIf(credentials::equals);
         this.credentials.add(credentials);
     }
 }
