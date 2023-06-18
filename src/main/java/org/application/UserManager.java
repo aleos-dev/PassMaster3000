@@ -4,6 +4,7 @@ import org.application.encryption.EncryptionModule;
 import org.application.exception.encryption.DecryptionException;
 import org.application.exception.encryption.InvalidEncryptionKeyException;
 import org.application.objects.user.User;
+import org.application.objects.user.exception.UserAlreadyExistException;
 import org.application.services.JSONService;
 
 import java.util.Map;
@@ -18,13 +19,18 @@ public class UserManager {
         getUsersDatabase();
     }
 
-    public boolean createNewUser(String userName, String password) {
-        // Method implementation
-        return false;
+    public void createNewUser(String userName, String password) {
+        if (usersDatabase.containsKey(userName))
+            throw new UserAlreadyExistException("This user already exists, please try another username");
+        else {
+            User user = new User(userName, password);
+            usersDatabase.put(userName,user);
+            System.out.println("User successfully created");
+        }
     }
 
-    public void saveUsersDatabase() {
-        // Method implementation
+    public void saveUsersDatabase(User user) {
+        usersDatabase.put(user.getLogin(), user);
     }
 
     private void getUsersDatabase() {
