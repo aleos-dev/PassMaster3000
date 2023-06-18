@@ -8,7 +8,7 @@ public class Validator {
     }
 
     public boolean validatePassword(String password) {
-        if (password.matches("^\\d{4,}$")) {
+        if (password.matches("^[A-Za-z0-9]{4,}$")) {
             return true;
         }
         return false;
