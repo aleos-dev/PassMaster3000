@@ -23,8 +23,8 @@ public class UserManager {
         return false;
     }
 
-    public void saveUsersDatabase() {
-        // Method implementation
+    public void saveUsersDatabase(User user) {
+        usersDatabase.put(user.getLogin(), user);
     }
 
     private void getUsersDatabase() {
