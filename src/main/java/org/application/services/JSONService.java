@@ -12,6 +12,7 @@ import org.application.objects.user.User;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -62,7 +63,9 @@ public class JSONService {
                     .stream()
                     .collect(Collectors.toMap(User::getLogin, user -> user));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException("Database load error", e);
+            System.out.println("Database load error, new DB was created.");
+            return new HashMap<>();
         }
     }
 

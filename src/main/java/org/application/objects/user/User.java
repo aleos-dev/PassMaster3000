@@ -48,8 +48,10 @@ public class User {
     }
 
     public void addWebsite(String link, Website website) {
+
         websites.put(link, website);
     }
+
 
     @Override
     public String toString() {

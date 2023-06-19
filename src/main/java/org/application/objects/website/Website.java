@@ -6,10 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Website {
+    @JsonProperty("name")
+    private final String name;
     @JsonProperty("credentials")
     private final Set<Credentials> credentials;
 
-    public Website() {
+    public Website(String name) {
+        this.name = name;
         this.credentials = new HashSet<>();
     }
 
@@ -21,6 +24,16 @@ public class Website {
         Credentials credentials = new Credentials(login, password);
         this.credentials.removeIf(credentials::equals);
         this.credentials.add(credentials);
+    }
+
+
+    public boolean doesLoginExist(String login) {
+        return credentials.stream()
+                .anyMatch(credentials -> credentials.login().equals(login));
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
