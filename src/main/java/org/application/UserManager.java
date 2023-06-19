@@ -2,11 +2,15 @@ package org.application;
 
 import org.application.encryption.EncryptionModule;
 import org.application.exception.encryption.DecryptionException;
+import org.application.exception.encryption.EncryptionException;
 import org.application.exception.encryption.InvalidEncryptionKeyException;
+import org.application.exception.validator.IncorrectLoginNameException;
+import org.application.exception.validator.IncorrectPasswordException;
 import org.application.objects.user.User;
-import org.application.objects.user.exception.UserAlreadyExistException;
+import org.application.exception.user.UserAlreadyExistException;
 import org.application.services.JSONService;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class UserManager {
@@ -19,18 +23,33 @@ public class UserManager {
         getUsersDatabase();
     }
 
-    public void createNewUser(String userName, String password) {
+    public void createNewUser(String userName, String password) throws IOException, IncorrectPasswordException, IncorrectLoginNameException, InvalidEncryptionKeyException, EncryptionException {
         if (usersDatabase.containsKey(userName))
             throw new UserAlreadyExistException("This user already exists, please try another username");
         else {
-            User user = new User(userName, password);
+            var validator = new Validator();
+            if (!validator.validateLogin(userName)) {
+                throw new IncorrectLoginNameException("Login should be between 3 and 20 alphanumeric characters.");
+            }
+
+            if (!validator.validatePassword(password)) {
+                throw new IncorrectPasswordException("Password should contain a minimum of 4 alphanumeric characters.");
+            }
+
+            encryptionModule = new EncryptionModule(password);
+            String encryptedPassword = encryptionModule.encrypt(password);
+
+
+            User user = new User(userName, encryptedPassword);
             usersDatabase.put(userName,user);
+            saveUsersDatabase(user);
             System.out.println("User successfully created");
         }
     }
 
-    public void saveUsersDatabase(User user) {
+    public void saveUsersDatabase(User user) throws IOException {
         usersDatabase.put(user.getLogin(), user);
+        jService.writeToFile(user);
     }
 
     private void getUsersDatabase() {
@@ -53,7 +72,7 @@ public class UserManager {
                 return true;
             }
         } catch (InvalidEncryptionKeyException | DecryptionException ignored) {
-            /* ignored */
+            System.out.println("Something went wrong.");
         }
 
         return false;

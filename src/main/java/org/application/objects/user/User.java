@@ -9,9 +9,9 @@ import java.util.Objects;
 
 public class User {
     @JsonProperty("login")
-    private final String login;
+    private String login;
     @JsonProperty("password")
-    private final String userPassword;
+    private String userPassword;
     @JsonProperty("websites")
     private final Map<String, Website> websites;
 
@@ -31,8 +31,16 @@ public class User {
         return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getUserPassword() {
         return userPassword;
+    }
+
+    public void setUserPassword(String password) {
+        this.userPassword = password;
     }
 
     public Map<String, Website> getWebsites() {
@@ -40,8 +48,10 @@ public class User {
     }
 
     public void addWebsite(String link, Website website) {
+
         websites.put(link, website);
     }
+
 
     @Override
     public String toString() {

@@ -12,6 +12,7 @@ import org.application.objects.user.User;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -32,11 +33,13 @@ public class JSONService {
         Objects.requireNonNull(user);
 
         ObjectNode userNode = mapper.convertValue(user, ObjectNode.class);
+        JsonNode userLogin = userNode.get("login");
         AtomicBoolean canWrite = new AtomicBoolean(true);
 
         JsonNode node = readOrCreateNewArray();
         node.forEach(elm -> {
-            if (elm instanceof ObjectNode obj && obj.equals(userNode)) {
+            JsonNode login = elm.get("login");
+            if (elm instanceof ObjectNode obj && login.equals(userLogin)) {
                 obj.setAll(userNode);
                 canWrite.set(false);
             }
@@ -62,7 +65,9 @@ public class JSONService {
                     .stream()
                     .collect(Collectors.toMap(User::getLogin, user -> user));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException("Database load error", e);
+            System.out.println("Database load error, new DB was created.");
+            return new HashMap<>();
         }
     }
 
