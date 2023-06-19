@@ -33,11 +33,13 @@ public class JSONService {
         Objects.requireNonNull(user);
 
         ObjectNode userNode = mapper.convertValue(user, ObjectNode.class);
+        JsonNode userLogin = userNode.get("login");
         AtomicBoolean canWrite = new AtomicBoolean(true);
 
         JsonNode node = readOrCreateNewArray();
         node.forEach(elm -> {
-            if (elm instanceof ObjectNode obj && obj.equals(userNode)) {
+            JsonNode login = elm.get("login");
+            if (elm instanceof ObjectNode obj && login.equals(userLogin)) {
                 obj.setAll(userNode);
                 canWrite.set(false);
             }
