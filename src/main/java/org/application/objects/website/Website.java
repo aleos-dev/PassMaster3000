@@ -11,6 +11,11 @@ public class Website {
     @JsonProperty("credentials")
     private final Set<Credentials> credentials;
 
+    public Website() {
+        this.name = "";
+        this.credentials = new HashSet<>();
+    }
+    
     public Website(String name) {
         this.name = name;
         this.credentials = new HashSet<>();
