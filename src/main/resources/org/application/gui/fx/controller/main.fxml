@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.application.gui.fx.controller.MainController">
+    <AnchorPane layoutX="225.0" layoutY="76.0" prefHeight="249.0" prefWidth="360.0" style="-fx-background-radius: 25; -fx-background-color: white;">
+      <ImageView blendMode="SRC_ATOP" fitHeight="256.0" fitWidth="346.0" layoutX="20.0" layoutY="-1.0">
+         <image>
+            <Image url="@../images/back.png" />
+         </image>
+      </ImageView>
+        <ComboBox fx:id="loginComboBox" layoutX="153.0" layoutY="30.0" prefHeight="23.0" prefWidth="181.0" />
+        <Text fx:id="passwordDisplay" layoutX="141.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FFFFFF;" textAlignment="CENTER" wrappingWidth="200.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+         <effect>
+            <DropShadow spread="0.65" />
+         </effect>
+        </Text>
+        <Button fx:id="copyPasswordButton" layoutX="36.0" layoutY="76.0" mnemonicParsing="false" onAction="#copyPasswordFromDisplayFieldToClipboard" prefHeight="34.0" prefWidth="95.0" text="Password">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="copyLoginButton" layoutX="35.0" layoutY="24.0" mnemonicParsing="false" onAction="#copyLoginFromBoxToClipboard" prefHeight="34.0" prefWidth="95.0" text="Login">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </AnchorPane>
+    <AnchorPane layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0" style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
+        <Button layoutX="182.0" layoutY="14.0" onAction="#closeProgram" text="X" />
+        <ButtonBar layoutX="10.0" layoutY="141.0" prefHeight="40.0" prefWidth="200.0" />
+        <TextField fx:id="recordSearchBar" layoutX="11.0" layoutY="91.0" promptText="Search record">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <ListView fx:id="recordNameListView" layoutX="10.0" layoutY="133.0" prefHeight="148.0" prefWidth="200.0" />
+        <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#openRecordManagementScene" text="Manage records">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </AnchorPane>
+    <Label fx:id="currentUserLabel" layoutX="291.0" layoutY="42.0" prefHeight="28.0" prefWidth="161.0" style="-fx-background-radius: 15;" styleClass="colorBackground" stylesheets="@../color_for_label.css" text="UserName" textAlignment="CENTER">
+        <font>
+            <Font size="24.0" />
+        </font>
+        <contextMenu>
+            <ContextMenu>
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#deleteAccount" text="Delete Account" />
+                </items>
+            </ContextMenu>
+        </contextMenu>
+    </Label>
+    <Button fx:id="signOutAndLoadLoginScene" layoutX="463.0" layoutY="45.0" mnemonicParsing="false" onAction="#signOutAndLoadLoginScene" text="Sign out" />
+</AnchorPane>

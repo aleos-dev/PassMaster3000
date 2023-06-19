@@ -1,27 +1,28 @@
 package org.application.objects.website;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
-@Data
 public class Website {
-    @JsonProperty("credentials")
-    private final Set<Credentials> credentials;
     @JsonProperty("name")
     private final String name;
+    @JsonProperty("credentials")
+    private final Set<Credentials> credentials;
 
     public Website() {
         this.name = "";
         this.credentials = new HashSet<>();
     }
-
+    
     public Website(String name) {
         this.name = name;
         this.credentials = new HashSet<>();
+    }
+
+    public Set<Credentials> getCredentials() {
+        return credentials;
     }
 
     public void addOrUpdateCredentials(String login, String password) {
@@ -36,18 +37,14 @@ public class Website {
                 .anyMatch(credentials -> credentials.login().equals(login));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Website website)) return false;
-        return Objects.equals(getName(), website.getName());
+    public String getName() {
+        return name;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getName());
+    public String toString() {
+        return "Website{" +
+                "credentials=" + credentials +
+                '}';
     }
 }
-
-
-

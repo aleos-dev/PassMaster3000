@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class MakePassword implements Generator {
     @Override
-    public String passwordGenerator(PasswordOptions passwordOptions) {
+    public String apply(PasswordOptions passwordOptions) {
         StringBuilder password = new StringBuilder();
         List<Character> charSet = new ArrayList<>();
 
