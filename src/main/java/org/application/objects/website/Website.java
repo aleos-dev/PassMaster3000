@@ -3,6 +3,7 @@ package org.application.objects.website;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Website {
@@ -44,7 +45,20 @@ public class Website {
     @Override
     public String toString() {
         return "Website{" +
-                "credentials=" + credentials +
+                "name='" + name + '\'' +
+                ", credentials=" + credentials +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Website website)) return false;
+        return Objects.equals(getName(), website.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }
