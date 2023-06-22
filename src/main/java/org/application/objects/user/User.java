@@ -10,12 +10,12 @@ import java.util.Objects;
 
 @Data
 public class User {
+    @JsonProperty("websites")
+    private final Map<String, Website> websites;
     @JsonProperty("login")
     private String login;
     @JsonProperty("password")
     private String userPassword;
-    @JsonProperty("websites")
-    private final Map<String, Website> websites;
 
     public User() {
         this.login = "login";

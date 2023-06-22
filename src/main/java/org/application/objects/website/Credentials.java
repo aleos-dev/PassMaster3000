@@ -1,10 +1,9 @@
 package org.application.objects.website;
 
-import lombok.Data;
-import lombok.*;
+import lombok.ToString;
 
 import java.util.Objects;
-@Getter
+
 @ToString
 public record Credentials(String login, String password) {
 

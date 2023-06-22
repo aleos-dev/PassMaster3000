@@ -4,10 +4,10 @@ import org.application.encryption.EncryptionModule;
 import org.application.exception.encryption.DecryptionException;
 import org.application.exception.encryption.EncryptionException;
 import org.application.exception.encryption.InvalidEncryptionKeyException;
+import org.application.exception.user.UserAlreadyExistException;
 import org.application.exception.validator.IncorrectLoginNameException;
 import org.application.exception.validator.IncorrectPasswordException;
 import org.application.objects.user.User;
-import org.application.exception.user.UserAlreadyExistException;
 import org.application.services.JSONService;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class UserManager {
 
 
             User user = new User(userName, encryptedPassword);
-            usersDatabase.put(userName,user);
+            usersDatabase.put(userName, user);
             saveUsersDatabase(user);
             System.out.println("User successfully created");
         }

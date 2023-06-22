@@ -10,15 +10,11 @@ import org.application.exception.user.UserAlreadyExistException;
 import org.application.exception.validator.IncorrectLoginNameException;
 import org.application.exception.validator.IncorrectPasswordException;
 import org.application.exception.validator.ValidatorException;
-import org.application.objects.user.User;
-import org.application.objects.website.Website;
 import org.application.passwordGenerator.Generator;
 import org.application.passwordGenerator.MakePassword;
 import org.application.passwordGenerator.PasswordOptions;
-import org.application.services.JSONService;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class Main {
 
