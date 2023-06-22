@@ -1,16 +1,12 @@
 package org.application.objects.website;
 
+import lombok.Data;
+import lombok.*;
+
 import java.util.Objects;
-
+@Getter
+@ToString
 public record Credentials(String login, String password) {
-
-    @Override
-    public String toString() {
-        return "Credentials{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
