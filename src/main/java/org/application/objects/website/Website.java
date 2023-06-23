@@ -1,29 +1,27 @@
 package org.application.objects.website;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Data
 public class Website {
-    @JsonProperty("name")
-    private final String name;
     @JsonProperty("credentials")
     private final Set<Credentials> credentials;
+    @JsonProperty("name")
+    private final String name;
 
     public Website() {
         this.name = "";
         this.credentials = new HashSet<>();
     }
-    
+
     public Website(String name) {
         this.name = name;
         this.credentials = new HashSet<>();
-    }
-
-    public Set<Credentials> getCredentials() {
-        return credentials;
     }
 
     public void addOrUpdateCredentials(String login, String password) {
@@ -38,18 +36,6 @@ public class Website {
                 .anyMatch(credentials -> credentials.login().equals(login));
     }
 
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "Website{" +
-                "name='" + name + '\'' +
-                ", credentials=" + credentials +
-                '}';
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,3 +48,6 @@ public class Website {
         return Objects.hash(getName());
     }
 }
+
+
+

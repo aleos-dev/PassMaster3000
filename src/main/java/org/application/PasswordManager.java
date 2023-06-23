@@ -8,7 +8,6 @@ import org.application.exception.passwordmanager.WebsiteDoesNotExistException;
 import org.application.exception.user.LoginForWebsiteAlreadyExistException;
 import org.application.exception.validator.IncorrectLoginNameException;
 import org.application.exception.validator.IncorrectWebsiteNameException;
-import org.application.exception.validator.ValidatorException;
 import org.application.objects.user.User;
 import org.application.objects.website.Credentials;
 import org.application.objects.website.Website;
