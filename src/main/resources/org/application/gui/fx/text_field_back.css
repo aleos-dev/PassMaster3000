@@ -1,0 +1,5 @@
+.darkBackground {
+    -fx-background-color: #333332; // Dark grey background
+-fx-text-fill: #-000001; // Black text
+-fx-effect: dropshadow( gaussian , rgba(-1,0,0,0.5) , 0,0,0,2); // Shadow around the text
+}

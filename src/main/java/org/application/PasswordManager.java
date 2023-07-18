@@ -22,7 +22,7 @@ public class PasswordManager {
     private final User user;
     private final EncryptionModule encryptionModule;
 
-    PasswordManager(UserManager userManager) {
+    public PasswordManager(UserManager userManager) {
         this.userManager = userManager;
         this.user = userManager.getUser();
         this.encryptionModule = userManager.getEncryptionModule();
@@ -48,21 +48,21 @@ public class PasswordManager {
             throw new IncorrectWebsiteNameException("Website name should be a valid URL format.");
         }
 
-        if (!validator.validateLogin(login)) {
+        if (validator.validateLogin(login)) {
             throw new IncorrectLoginNameException("Login should be between 3 and 20 alphanumeric characters.");
         }
-
-        var website = new Website(websiteName);
+        Website website = user.getWebsites().get(websiteName);
         String encryptedLogin = encryptionModule.encrypt(login);
-        String encryptedPassword = encryptionModule.encrypt(password);
-        website.addOrUpdateCredentials(encryptedLogin, encryptedPassword);
-
-        if (getWebsite(websiteName) != null && getWebsite(websiteName).doesLoginExist(login)) {
+        if ( website == null) {
+            website = new Website(websiteName);
+        } else if (website.doesLoginExist(encryptedLogin)) {
             throw new LoginForWebsiteAlreadyExistException("The current login already exists. Please try a different one.");
         }
 
-        user.addWebsite(website.getName(), website);
+        String encryptedPassword = encryptionModule.encrypt(password);
+        website.addOrUpdateCredentials(encryptedLogin, encryptedPassword);
 
+        user.addWebsite(website.getName(), website);
         userManager.saveUsersDatabase(user);
     }
 
@@ -85,8 +85,26 @@ public class PasswordManager {
         userManager.saveUsersDatabase(user);
     }
 
-    public void changeUserCredentials(String userName, String password) {
-        // TODO: Implement this.
+    public void deleteWebsite(String websiteName) throws IOException {
+
+        user.getWebsites().remove(websiteName);
+        userManager.saveUsersDatabase(user);
+    }
+
+    public void deleteCredential(String websiteName, String login) throws WebsiteDoesNotExistException, IOException {
+
+        var website = getWebsite(websiteName);
+        if (website == null) {
+            throw new WebsiteDoesNotExistException("The provided website name does not exist.");
+        }
+
+        try {
+            String encryptedLogin = encryptionModule.encrypt(login);
+            website.getCredentials().remove(new Credentials(encryptedLogin, ""));
+        } catch (EncryptionException e) {
+            throw new RuntimeException(e);
+        }
+        userManager.saveUsersDatabase(user);
     }
 
     private Website getWebsite(String website) {

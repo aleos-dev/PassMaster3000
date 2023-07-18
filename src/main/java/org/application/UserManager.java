@@ -19,7 +19,7 @@ public class UserManager {
     private EncryptionModule encryptionModule;
     private User authorizedUser;
 
-    UserManager() {
+    public UserManager() {
         getUsersDatabase();
     }
 
@@ -28,7 +28,7 @@ public class UserManager {
             throw new UserAlreadyExistException("This user already exists, please try another username");
         else {
             var validator = new Validator();
-            if (!validator.validateLogin(userName)) {
+            if (validator.validateLogin(userName)) {
                 throw new IncorrectLoginNameException("Login should be between 3 and 20 alphanumeric characters.");
             }
 
@@ -41,9 +41,8 @@ public class UserManager {
 
 
             User user = new User(userName, encryptedPassword);
-            usersDatabase.put(userName, user);
+            usersDatabase.put(userName,user);
             saveUsersDatabase(user);
-            System.out.println("User successfully created");
         }
     }
 
@@ -77,6 +76,15 @@ public class UserManager {
 
         return false;
 
+    }
+
+    public void deleteAccount(String userName) {
+        usersDatabase.remove(userName);
+        try {
+            jService.removeUserFromDatabase(userName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public User getUser() {

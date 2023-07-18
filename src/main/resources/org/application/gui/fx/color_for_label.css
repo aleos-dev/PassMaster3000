@@ -1,0 +1,5 @@
+.colorBackground {
+    -fx-background-color: linear-gradient(to right top, #facd68, #fc76b3);
+    -fx-text-fill: #000000;
+    -fx-alignment: center;
+}
