@@ -48,7 +48,7 @@ public class PasswordManager {
             throw new IncorrectWebsiteNameException("Website name should be a valid URL format.");
         }
 
-        if (!validator.validateLogin(login)) {
+        if (validator.validateLogin(login)) {
             throw new IncorrectLoginNameException("Login should be between 3 and 20 alphanumeric characters.");
         }
         Website website = user.getWebsites().get(websiteName);

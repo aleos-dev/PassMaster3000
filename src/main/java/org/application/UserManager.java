@@ -28,7 +28,7 @@ public class UserManager {
             throw new UserAlreadyExistException("This user already exists, please try another username");
         else {
             var validator = new Validator();
-            if (!validator.validateLogin(userName)) {
+            if (validator.validateLogin(userName)) {
                 throw new IncorrectLoginNameException("Login should be between 3 and 20 alphanumeric characters.");
             }
 

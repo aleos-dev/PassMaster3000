@@ -11,64 +11,56 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.application.gui.fx.controller.LoginController">
-    <children>
-        <AnchorPane layoutX="224.0" layoutY="76.0" prefHeight="249.0" prefWidth="374.0"
-                    style="-fx-background-radius: 25; -fx-background-color: white;">
-            <children>
-                <ImageView blendMode="SRC_ATOP" fitHeight="261.0" fitWidth="358.0" layoutX="16.0">
-                    <image>
-                        <Image url="@../images/lock.png"/>
-                    </image>
-                </ImageView>
-                <Button fx:id="backButton" layoutX="42.0" layoutY="185.0" mnemonicParsing="false" onAction="#back"
-                        prefWidth="100.0" text="Back" visible="false">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Button>
-                <Button fx:id="createButton" layoutX="188.0" layoutY="185.0" mnemonicParsing="false"
-                        onAction="#createNewUser" prefHeight="34.0" prefWidth="100.0" text="Create" visible="false">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Button>
-                <Text fill="#d7c608" layoutX="60.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text="Pass Master 3000">
-                    <font>
-                        <Font size="36.0"/>
-                    </font>
-                </Text>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="sideBar" layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0"
-                    style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
-            <children>
-                <Button layoutX="182.0" layoutY="14.0" onAction="#closeProgram" text="X"/>
-                <TextField fx:id="loginField" layoutX="14.0" layoutY="72.0" prefHeight="34.0" prefWidth="190.0"
-                           promptText="Enter Login">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </TextField>
-                <TextField fx:id="passwordField" layoutX="14.0" layoutY="120.0" onKeyPressed="#enterPassword"
-                           prefHeight="34.0" prefWidth="190.0" promptText="Enter Password">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </TextField>
-                <Button fx:id="newUserButton" layoutX="60.0" layoutY="181.0" mnemonicParsing="false"
-                        onAction="#initCreatingNewUser" prefHeight="34.0" prefWidth="100.0" text="New User">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Button>
-                <Button fx:id="signInButton" layoutX="59.0" layoutY="234.0" mnemonicParsing="false" onAction="#login"
-                        prefWidth="100.0" text="Sign In">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Button>
-            </children>
-        </AnchorPane>
-    </children>
+    <AnchorPane layoutX="224.0" layoutY="76.0" prefHeight="249.0" prefWidth="374.0"
+                style="-fx-background-radius: 25; -fx-background-color: white;">
+        <ImageView blendMode="SRC_ATOP" fitHeight="261.0" fitWidth="358.0" layoutX="16.0">
+            <Image url="@../images/lock.png"/>
+        </ImageView>
+        <Button fx:id="backButton" layoutX="42.0" layoutY="185.0" mnemonicParsing="false" onAction="#back"
+                prefWidth="100.0" text="Back" visible="false">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Button fx:id="createButton" layoutX="188.0" layoutY="185.0" mnemonicParsing="false"
+                onAction="#createNewUser" prefHeight="34.0" prefWidth="100.0" text="Create" visible="false">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Text fill="#d7c608" layoutX="60.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Pass Master 3000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane fx:id="sideBar" layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0"
+                style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
+        <Button layoutX="182.0" layoutY="14.0" onAction="#closeProgram" text="X"/>
+        <TextField fx:id="loginField" layoutX="14.0" layoutY="72.0" prefHeight="34.0" prefWidth="190.0"
+                   promptText="Enter Login">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="passwordField" layoutX="14.0" layoutY="120.0" onKeyPressed="#enterPassword"
+                   prefHeight="34.0" prefWidth="190.0" promptText="Enter Password">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </TextField>
+        <Button fx:id="newUserButton" layoutX="60.0" layoutY="181.0" mnemonicParsing="false"
+                onAction="#initCreatingNewUser" prefHeight="34.0" prefWidth="100.0" text="New User">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Button fx:id="signInButton" layoutX="59.0" layoutY="234.0" mnemonicParsing="false" onAction="#login"
+                prefWidth="100.0" text="Sign In">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+    </AnchorPane>
 </AnchorPane>
