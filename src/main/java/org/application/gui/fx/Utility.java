@@ -17,8 +17,8 @@ import org.application.exception.user.UserAlreadyExistException;
 import org.application.exception.validator.IncorrectLoginNameException;
 import org.application.exception.validator.IncorrectWebsiteNameException;
 import org.application.gui.fx.controller.SceneController;
-import org.application.passwordGenerator.MakePassword;
-import org.application.passwordGenerator.PasswordOptions;
+import org.application.passwordgenerator.RandomPasswordGenerator;
+import org.application.passwordgenerator.PasswordCriteria;
 
 import java.io.IOException;
 
@@ -33,7 +33,7 @@ public class Utility {
     private static final String WEBSITE_DOES_NOT_EXIST = "Can't find this record";
     private static final String USER_ALREADY_EXIST = "Incorrect user name";
 
-    private static final MakePassword passwordGenerator = new MakePassword();
+    private static final RandomPasswordGenerator passwordGenerator = new RandomPasswordGenerator();
 
     // Method to set a new scene with a given loader and stage
     public static void setNewScene(FXMLLoader loader, Stage stage) {
@@ -92,8 +92,8 @@ public class Utility {
     }
 
     public static String generatePassword(int length, boolean upperCase, boolean digits, boolean specialChars) {
-        var passwordOption = new PasswordOptions(length, upperCase, true, digits, specialChars);
-        return passwordGenerator.apply(passwordOption);
+        var passwordOption = new PasswordCriteria(length, upperCase, true, digits, specialChars);
+        return passwordGenerator.generate(passwordOption);
     }
 
     // Method to display an alert with the given error type and details, and check the user's response
