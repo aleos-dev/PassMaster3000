@@ -38,24 +38,15 @@ public class LoginController implements Initializable, SceneController {
     private Button createButton;
 
     private Stage stage;
-    private double x = 0, y = 0;
 
     // This method is called after the fxml file has been loaded
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sideBar.setOnMousePressed(mouseEvent -> {
-            x = mouseEvent.getSceneX();
-            y = mouseEvent.getSceneY();
-        });
-
-        sideBar.setOnMouseDragged(mouseEvent -> {
-            stage.setX(mouseEvent.getScreenX() - x);
-            stage.setY(mouseEvent.getScreenY() - y);
-        });
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        Utility.enableWindowDrag(sideBar, stage);
     }
 
     // Trigger login when ENTER is pressed in the password field

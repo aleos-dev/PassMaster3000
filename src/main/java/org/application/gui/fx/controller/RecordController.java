@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,6 +32,8 @@ public class RecordController implements Initializable, SceneController {
     private TextField login;
     @FXML
     private TextField password;
+    @FXML
+    private AnchorPane sideBar;
     @FXML
     private TextField recordSearchBar;
     @FXML
@@ -63,6 +66,11 @@ public class RecordController implements Initializable, SceneController {
         setupRecordSearchBarListener();
         setupRecordSearchBarEnterKeyPressed();
         setupRecordListClickEvent();
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        Utility.enableWindowDrag(sideBar, stage);
     }
 
     // Set up a listener for changes in the record search bar.
@@ -137,11 +145,6 @@ public class RecordController implements Initializable, SceneController {
     @FXML
     private void openMainScene() {
         Utility.setNewScene(new FXMLLoader(getClass().getResource("main.fxml")), stage);
-    }
-
-    @FXML
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     @FXML
