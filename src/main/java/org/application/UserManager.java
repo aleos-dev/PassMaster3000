@@ -71,7 +71,7 @@ public class UserManager {
                 return true;
             }
         } catch (InvalidEncryptionKeyException | DecryptionException ignored) {
-            System.out.println("Something went wrong.");
+            /* TODO: now it is IGNORED */
         }
 
         return false;

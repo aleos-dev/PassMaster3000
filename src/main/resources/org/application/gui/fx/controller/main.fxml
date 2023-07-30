@@ -18,7 +18,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.application.gui.fx.controller.MainController">
     <AnchorPane layoutX="225.0" layoutY="76.0" prefHeight="249.0" prefWidth="360.0" style="-fx-background-radius: 25; -fx-background-color: white;">
         <ImageView blendMode="SRC_ATOP" fitHeight="256.0" fitWidth="346.0" layoutX="20.0" layoutY="-1.0">
-            <Image url="@../images/back.png"/>
+            <Image url="@../images/back.png" />
         </ImageView>
         <ComboBox fx:id="loginComboBox" layoutX="153.0" layoutY="30.0" prefHeight="23.0" prefWidth="181.0" />
         <Text fx:id="passwordDisplay" layoutX="141.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FFFFFF;" textAlignment="CENTER" wrappingWidth="200.0">
@@ -40,7 +40,7 @@
             </font>
         </Button>
     </AnchorPane>
-    <AnchorPane layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0" style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
+    <AnchorPane fx:id="sideBar" layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0" style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
         <Button layoutX="182.0" layoutY="14.0" onAction="#closeProgram" text="X" />
         <ButtonBar layoutX="10.0" layoutY="141.0" prefHeight="40.0" prefWidth="200.0" />
         <TextField fx:id="recordSearchBar" layoutX="11.0" layoutY="91.0" promptText="Search record">

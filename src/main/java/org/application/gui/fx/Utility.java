@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -52,6 +53,21 @@ public class Utility {
         } catch (Exception e) {
             handleException(e, e.getMessage(), null);
         }
+    }
+
+    public static void enableWindowDrag(AnchorPane sideBar, Stage stage) {
+        final double[] x = new double[1];
+        final double[] y = new double[1];
+
+        sideBar.setOnMousePressed(mouseEvent -> {
+            x[0] = mouseEvent.getSceneX();
+            y[0] = mouseEvent.getSceneY();
+        });
+
+        sideBar.setOnMouseDragged(mouseEvent -> {
+            stage.setX(mouseEvent.getScreenX() - x[0]);
+            stage.setY(mouseEvent.getScreenY() - y[0]);
+        });
     }
 
     // Method to handle exceptions and display appropriate error messages

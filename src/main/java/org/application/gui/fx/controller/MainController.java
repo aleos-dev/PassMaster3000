@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -29,6 +30,8 @@ public class MainController implements Initializable, SceneController {
     private Button copyLoginButton;
     @FXML
     private Button copyPasswordButton;
+    @FXML
+    private AnchorPane sideBar;
     @FXML
     private ComboBox<String> loginComboBox;
     @FXML
@@ -61,6 +64,12 @@ public class MainController implements Initializable, SceneController {
         setupRecordSearchBarListener();
         setupRecordSearchBarEnterKeyPressed();
         setupRecordListClickEvent();
+    }
+
+    // Sets the stage
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        Utility.enableWindowDrag(sideBar, stage);
     }
 
     // Sets up a listener for changes in the record search bar
@@ -135,11 +144,6 @@ public class MainController implements Initializable, SceneController {
     @FXML
     void closeProgram() {
         stage.close();
-    }
-
-    // Sets the stage
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     // Handles the change of the record search bar
