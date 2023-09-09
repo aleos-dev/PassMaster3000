@@ -13,16 +13,6 @@
         <ImageView blendMode="SRC_ATOP" fitHeight="254.0" fitWidth="360.0" layoutX="16.0">
             <Image url="@../images/lock.png" />
         </ImageView>
-        <Button fx:id="backButton" layoutX="42.0" layoutY="185.0" mnemonicParsing="false" onAction="#back" prefWidth="100.0" text="Back" visible="false">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
-        <Button fx:id="createButton" layoutX="188.0" layoutY="185.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="34.0" prefWidth="100.0" text="Create" visible="false">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
     </AnchorPane>
     <AnchorPane fx:id="sideBar" layoutX="31.0" layoutY="53.0" prefHeight="295.0" prefWidth="220.0" style="-fx-background-radius: 25;" styleClass="colorBackground" stylesheets="@../color.css">
         <Button layoutX="182.0" layoutY="14.0" onAction="#closeProgram" text="X" />
@@ -46,8 +36,18 @@
                 <Font size="18.0" />
             </font>
         </Button>
+        <Button fx:id="backButton" layoutX="50.0" layoutY="181.0" mnemonicParsing="false" onAction="#back" prefWidth="120.0" text="Back" visible="false">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="createButton" layoutX="50.0" layoutY="230.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="34.0" prefWidth="120.0" text="Create" visible="false">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
     </AnchorPane>
-     <Text fill="#2c2929" layoutX="262.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pass Master 3000">
+     <Text fill="#2c2929" layoutX="262.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Privet Mam">
          <font>
              <Font name="Noto Sans Regular" size="36.0" />
          </font>
