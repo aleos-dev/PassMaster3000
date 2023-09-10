@@ -16,44 +16,47 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, maxOS-latest]
+        os: [ubuntu-latest] #, windows-latest, maxOS-latest]
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout
+      - uses: actions/checkout@v3
     
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
         
-    - name: Create JavaFX custom runtime image with JLink
-      run: mvn -B javafx:jlink --file pom.xml
-    - name: Create dir and copy aftifact
+      - name: Build projects
+        run: mvn -B javafx:jlink --file pom.xml
+    #- name: Create dir and copy aftifact
       #run: mkdir staging && cp target/*.zip staging
       
-    - name: Create a Release
-      id: create_release
-      uses: elgohr/Github-Release-Action@v4
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-      with:
-        title: MyFirstCIRelease
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./target/*.zip
+      - name: Create a Release
+        id: create_release
+        uses: actions/creare-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/*.zip
         #asset_path: ./*.zip
-        asset_name: PassMaster3000.zip
-        asset_content_type: application/zipPackage
+          asset_name: PassMaster3000.zip
+          asset_content_type: application/zipPackage
         #path: staging
     
    
