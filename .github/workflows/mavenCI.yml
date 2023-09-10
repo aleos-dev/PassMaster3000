@@ -34,6 +34,8 @@ jobs:
         
     - name: Create JavaFX custom runtime image with JLink
       run: mvn -B javafx:jlink --file pom.xml
+    - name: Create dir and copy aftifact
+      run: mkdir staging && cp target/*.zip staging
       
     - name: Create a Release
       uses: elgohr/Github-Release-Action@v4
@@ -41,4 +43,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         title: MyFirstCIRelease
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
+    
    
