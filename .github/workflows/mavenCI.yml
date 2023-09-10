@@ -20,7 +20,8 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, maxOS-latest]
+       # os: [ubuntu-latest, windows-latest, maxOS-latest]
+        os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -35,7 +36,7 @@ jobs:
     - name: Create JavaFX custom runtime image with JLink
       run: mvn -B javafx:jlink --file pom.xml
     - name: Create dir and copy aftifact
-      run: mkdir staging && cp target/*.zip staging
+      run: mkdir staging && cp target/PassMaster3000.zip staging
       
     - name: Create a Release
       uses: elgohr/Github-Release-Action@v4
@@ -43,8 +44,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         title: MyFirstCIRelease
+
+        
     - name: Upload artifact
       uses: actions/upload-artifact@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         name: Package
         path: staging
