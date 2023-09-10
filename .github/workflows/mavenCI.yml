@@ -34,7 +34,7 @@ jobs:
         
     - name: Create JavaFX custom runtime image with JLink
       run: mvn -B javafx:jlink --file pom.xml
-    - name: Create dir and copy aftifact
+    #- name: Create dir and copy aftifact
       #run: mkdir staging && cp target/*.zip staging
       
     - name: Create a Release
