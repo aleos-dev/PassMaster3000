@@ -8,18 +8,20 @@
 
 name: Java CI with Maven
 
-on:
+on: 
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    tags:
+    - '*'
+  
 jobs:
   build:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
         os: [ubuntu-latest] #, windows-latest, maxOS-latest]
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -39,24 +41,12 @@ jobs:
       
       - name: Create a Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/*.zip
-        #asset_path: ./*.zip
-          asset_name: PassMaster3000.zip
-          asset_content_type: application/zipPackage
-        #path: staging
+          artifacts: "PassMaster3000.zip,target/*.zip"
+          bodyFile: "body.md"
+        #env:
+          #GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+       
     
    
